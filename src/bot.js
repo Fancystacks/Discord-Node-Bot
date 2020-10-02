@@ -19,6 +19,8 @@ client.on('message', message => {
     
         if (commandName === 'kick') {
             message.channel.send('Kicked the user.');
+        } else if (commandName === 'ban') {
+            message.channel.send("Banned the user.");
         }
     }
 
