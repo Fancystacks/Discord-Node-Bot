@@ -51,6 +51,7 @@ client.on('message', async message => {
             console.log(err);
             message.channel.send("An error occured. I may not have permissions, or the user was not found.");
         }
+        // webhook announcements for Captain Hook Bot
     } else if (commandName === 'announce') {
         console.log(args);
         const msg = args.join(' ');
