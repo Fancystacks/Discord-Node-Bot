@@ -16,9 +16,12 @@ client.on('message', message => {
         .trim()
         .substring(PREFIX.length)
         .split(/\s+/);
-    console.log(commandName);
-    console.log(args);
+    
+        if (commandName === 'kick') {
+            message.channel.send('Kicked the user.');
+        }
     }
+
     console.log(`[${message.author.tag}] : ${message.content}`);
     if (message.content === 'Ping') {
       message.reply('Pong!');
