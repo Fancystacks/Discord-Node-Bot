@@ -33,6 +33,8 @@ Webhooks can be added from the Server Settings.
 
 <img src="https://user-images.githubusercontent.com/38336934/94970100-258b0880-04c1-11eb-8c72-53b689f5dbfc.png"  width="570" height="350">
 
-Use the Webhook (Captain Hook above) to make announcements to the channel with the command `$announce`.
+Use the Webhook (Captain Hook above) to make announcements to the channel.
+
+- Tag desired roles with the command `$announce`
 
 [Try it on Discord Now!](https://discord.com)
