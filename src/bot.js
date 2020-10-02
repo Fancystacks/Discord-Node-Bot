@@ -9,6 +9,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+    // message from user exempt '$' including spaces
     if (message.author.bot) 
         return;
     if (message.content.startsWith(PREFIX)) {
@@ -16,8 +17,10 @@ client.on('message', message => {
         .trim()
         .substring(PREFIX.length)
         .split(/\s+/);
-
+        // allowing bot permissions to kick someone in lower heirarchy
         if (commandName === 'kick') {
+            if (!message.member.hasPermission("KICK_MEMBERS")) 
+                return message.reply("You do not possess permissions");
             if (args.length === 0) 
             return message.reply("Please provide an ID.");
             const member = message.guild.members.cache.get(args[0]);
