@@ -49,24 +49,6 @@ client.on('message', async message => {
     }
  }
 
- client.on('messageReactionAdd', (reaction, user) => {
-     const { name } = reaction.emoji;
-     const member = reaction.message.guild.members.cache.get(user.id);
-    if (reaction.message.id === '761484398448476171') {
-        switch (name) {
-            case '💚':
-                member.roles.add('761480385770815518');
-                break;
-            case '💛':
-                member.roles.add('761484110166229042');
-                break;
-            case '💙':
-                member.roles.add('761484224087195648');
-                break;
-        }
-    }
- });
-
     // bot word responses to the user
     console.log(`[${message.author.tag}] : ${message.content}`);
     if (message.content === 'Ping') {
