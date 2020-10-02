@@ -1,12 +1,17 @@
 require('dotenv').config();
 
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const { Client, WebhookClient } = require('discord.js');
+const client = new Client();
 const PREFIX = "$";
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
+
+const webhookClient = new WebhookClient(
+    process.env.WEBHOOK_ID,
+    process.env.WEBHOOK_TOKEN
+);
 
 client.on('message', async message => {
     // message from user exempt '$' including spaces
@@ -46,6 +51,11 @@ client.on('message', async message => {
             console.log(err);
             message.channel.send("An error occured. I may not have permissions, or the user was not found.");
         }
+    } else if (commandName === 'announce') {
+        console.log(args);
+        const msg = args.join(' ');
+        console.log(msg);
+        webhookClient.send(msg);
     }
  }
 
