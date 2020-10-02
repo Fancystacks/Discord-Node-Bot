@@ -39,17 +39,22 @@ client.on('message', message => {
         if (args.length === 0) 
         return message.reply("Please provide an ID.");
         
-        message.guild.members.ban(args[0])
-        .catch((err) => console.log(err));
+        try {
+            message.guild.members.ban(args[0]);
+        } catch (err) {
+            
         }
     }
+ }
 
     console.log(`[${message.author.tag}] : ${message.content}`);
     if (message.content === 'Ping') {
       message.reply('Pong!');
-    } else if (message.content == "Hello") {
+    } else if (message.content === "Hello" || message.content === "Hi") {
         message.reply(`Hi there, ${message.author.username}!`);
+    } else if (message.content === "Marco") {
+        message.reply("Polo!"); 
     }
-});
+    });
 
 client.login(process.env.DISCORD_BOT);
