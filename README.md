@@ -8,6 +8,7 @@
 
   - Set up a new BOT on your server
   - Acquire Client ID and Token from the OAuth2 section
+  - Log the BOT in to the server
 
 ## Download:
 
