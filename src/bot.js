@@ -24,13 +24,11 @@ client.on('message', message => {
             if (member) {
                 member
                     .kick()
-                    .then((member) => message.send(`${member} was kicked.`))
-                    .catch((error) => message.channel.send("I don't have permissions to kick :("));
-                message.channel.send('Kicked the user.');
+                    .then((member) => message.channel.send(`${member} was kicked.`))
+                    .catch((err) => message.channel.send("I don't have permissions to kick :("));
             } else {
                 message.channel.send("Sorry, member not found.");
             }
-
         } 
     }
 
