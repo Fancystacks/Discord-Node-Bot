@@ -8,7 +8,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     // message from user exempt '$' including spaces
     if (message.author.bot) 
         return;
@@ -35,14 +35,16 @@ client.on('message', message => {
             // banning a user if permissions allow
         } else if (commandName === 'ban') {
             if (!message.member.hasPermission("BAN_MEMBERS")) 
-            return message.reply("You do not possess permissions");
+            return message.reply("You do not possess permissions.");
         if (args.length === 0) 
         return message.reply("Please provide an ID.");
         
         try {
-            message.guild.members.ban(args[0]);
+           const user = await message.guild.members.ban(args[0]);
+           message.channel.send("User was banned.");
         } catch (err) {
-            
+            console.log(err);
+            message.channel.send("An error occured. I may not have permissions, or the user was not found.");
         }
     }
  }
