@@ -32,7 +32,16 @@ client.on('message', message => {
             } else {
                 message.channel.send("Sorry, member not found.");
             }
-        } 
+            // banning a user if permissions allow
+        } else if (commandName === 'ban') {
+            if (!message.member.hasPermission("BAN_MEMBERS")) 
+            return message.reply("You do not possess permissions");
+        if (args.length === 0) 
+        return message.reply("Please provide an ID.");
+        
+        message.guild.members.ban(args[0])
+        .catch((err) => console.log(err));
+        }
     }
 
     console.log(`[${message.author.tag}] : ${message.content}`);
