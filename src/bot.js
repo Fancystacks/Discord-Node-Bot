@@ -18,6 +18,7 @@ client.on('message', message => {
         .split(/\s+/);
     
         if (commandName === 'kick') {
+            const member = message.guild.members.cache
             message.channel.send('Kicked the user.');
         } else if (commandName === 'ban') {
             message.channel.send("Banned the user.");
@@ -28,7 +29,7 @@ client.on('message', message => {
     if (message.content === 'Ping') {
       message.reply('Pong!');
     } else if (message.content == "Hello") {
-        message.reply(`Hi, there, ${message.author.username}!`);
+        message.reply(`Hi there, ${message.author.username}!`);
     }
 });
 
